@@ -1,0 +1,35 @@
+version: '3.6'
+
+volumes:
+  mysql_data:
+
+services:
+
+  mysql:
+    image: mysql
+    container_name: mysql_server
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=pwd
+    networks:
+      - db-network
+
+  db_client:
+    build:
+      context: ./containers/client
+    networks:
+      - db-network
+    depends_on:
+      - mysql
+
+  maven:
+    image: maven
+    container_name: builder
+    volumes:
+      - ${PWD}:/tmp
+    networks:
+      - db-network
+
+networks:
+  db-network:
