@@ -20,8 +20,6 @@ services:
       context: ./containers/client
     networks:
       - db-network
-    depends_on:
-      - mysql
 
   maven:
     image: maven
