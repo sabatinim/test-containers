@@ -6,4 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: CI
-        run: ./build.sh
+        run: script/ci
+      - name: DEMO
+        run: script/demo

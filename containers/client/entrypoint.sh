@@ -5,7 +5,8 @@ schema)
   mysql --host=mysql -uroot -ppwd < employees.sql
   echo "EMPLOYEES schema created!"
   ;;
-other)
+demo)
+    mysql --host=mysql -uroot -ppwd < demo.sql
   echo "Could load demo data!"
   ;;
 esac

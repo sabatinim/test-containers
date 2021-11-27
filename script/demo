@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker-compose up -d mysql
+docker-compose run db_client schema
+
+docker-compose run db_client demo
+docker-compose run maven  java -jar /tmp/target/test-containers-1.0-SNAPSHOT-jar-with-dependencies.jardocker-compose down --remove-orphans

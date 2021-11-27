@@ -1,5 +1,10 @@
 package com.kata.testcontainers
 
+import com.kata.testcontainers.infrastructure.loadEmployeeWith
+
 fun main() {
-    println("stocazzo!")
+    val employees = loadEmployeeWith()
+
+    println("Employees")
+    employees().map { it.employeeGroup.forEach(::println) }
 }
