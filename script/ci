@@ -5,6 +5,6 @@ docker-compose build db_client
 docker-compose run db_client schema
 
 docker-compose run maven mvn --quiet -f /tmp clean install
-docker-compose run maven mvn surefire-report:report -DshowSuccess=false
+docker-compose run maven mvn -f /tmp surefire-report:report -DshowSuccess=false
 
 docker-compose down --remove-orphans
