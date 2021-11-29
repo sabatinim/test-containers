@@ -1,4 +1,7 @@
 ## Build
+![CI](https://github.com/sabatinim/test-containers/actions/workflows/main.yml/badge.svg)
 
 ## Problem
-Show test container capabilities
+- Install Docker
+- run: script/ci
+- run: script/demo
