@@ -1,14 +1,20 @@
 name: test-containers-CI
 on: push
+permissions:
+  contents: read
 jobs:
   test:
+    permissions:
+      contents: read # for actions/checkout to fetch code
+      security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: CI
-        run: script/ci
-      - name: DEMO
-        run: script/demo
+#      - name: CI
+#        run: script/ci
+#      - name: DEMO
+#        run: script/demo
       - name: SEC_RES
         uses: aquasecurity/trivy-action@master
         with:
