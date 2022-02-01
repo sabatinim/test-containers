@@ -19,6 +19,8 @@ jobs:
         uses: aquasecurity/trivy-action@2a2157eb22c08c9a1fac99263430307b8d1bc7a2
         with:
           image-ref: 'mysql:latest'
+          ignore-unfixed: true
+          vuln-type: "os,library"
           format: 'template'
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
