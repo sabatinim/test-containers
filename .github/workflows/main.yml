@@ -22,7 +22,7 @@ jobs:
           ignore-unfixed: true
           vuln-type: "os,library"
           format: 'table'
-          severity: 'CRITICAL,HIGH'
+          severity: 'CRITICAL,HIGH,MEDIUM,LOW'
 #          template: '@/contrib/sarif.tpl'
 #          output: 'trivy-results.sarif'
 #
