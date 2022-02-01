@@ -1,4 +1,4 @@
-name: docker-compose-actions-workflow
+name: test-containers-CI
 on: push
 jobs:
   test:
