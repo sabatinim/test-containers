@@ -11,22 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-#      - name: CI
-#        run: script/ci
-#      - name: DEMO
-#        run: script/demo
-      - name: SEC_RES
+      - name: CI
+        run: script/ci
+      - name: DEMO
+        run: script/demo
+      - name: SEC_RES_CHECK
         uses: aquasecurity/trivy-action@2a2157eb22c08c9a1fac99263430307b8d1bc7a2
         with:
-          image-ref: 'docker.elastic.co/elasticsearch/elasticsearch:6.8.21'
+          image-ref: 'mysql:latest'
           ignore-unfixed: true
           vuln-type: "os,library"
           format: 'table'
           severity: 'CRITICAL,HIGH,MEDIUM,LOW'
           template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
-
-      - name: Upload Trivy scan results to GitHub Security tab
+      - name: SEC_RES_RESULT_UPLOAD
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: 'trivy-results.sarif'
