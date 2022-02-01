@@ -18,7 +18,7 @@ jobs:
       - name: SEC_RES
         uses: aquasecurity/trivy-action@2a2157eb22c08c9a1fac99263430307b8d1bc7a2
         with:
-          image-ref: 'mysql:latest'
+          image-ref: 'docker.elastic.co/elasticsearch/elasticsearch:6.8.21'
           ignore-unfixed: true
           vuln-type: "os,library"
           format: 'table'
