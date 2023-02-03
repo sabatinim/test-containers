@@ -2,6 +2,7 @@
 
 docker-compose up -d mysql
 docker-compose run db_client schema
+
 docker-compose run maven mvn --quiet -f /tmp clean install
 
 docker-compose run db_client demo
