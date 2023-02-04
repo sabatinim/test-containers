@@ -11,4 +11,7 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 .idea
 *.iml
-*.so
+*.so*
+repository
+hsperfdata_root
+*.log
