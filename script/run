@@ -1,0 +1,40 @@
+#!/bin/bash
+
+function compose() {
+  docker-compose "$@"
+}
+
+case $1 in
+
+ci)
+  compose up -d mysql
+  compose build db_client
+  compose run db_client schema
+
+  compose run maven mvn --quiet -f /tmp clean install
+  compose run maven mvn -f /tmp surefire-report:report -DshowSuccess=false
+
+  compose down --remove-orphans
+  ;;
+
+demo)
+  compose up -d mysql
+  compose run db_client schema
+
+  compose run maven mvn --quiet -f /tmp clean install
+
+  compose run db_client demo
+  compose run maven java -jar /tmp/target/test-containers-1.0-SNAPSHOT-jar-with-dependencies.jar
+  compose down --remove-orphans
+  ;;
+-h | --help | help)
+  echo "USAGE: $0 [COMMAND | any command to delegate to docker-compose]"
+  echo
+  echo "Commands:"
+  echo "  ci           build and execute tests"
+  echo "  demo         run local application"
+  ;;
+*)
+  compose "$0"
+  ;;
+esac

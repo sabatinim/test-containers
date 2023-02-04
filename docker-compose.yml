@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.8'
 
 volumes:
   mysql_data:
@@ -31,6 +31,7 @@ services:
     container_name: builder
     volumes:
       - ${PWD}:/tmp
+      - ${PWD}:/root/.m2
     networks:
       - db-network
 
